@@ -12,3 +12,4 @@ ALX Software Engineering - Project 0x00. Shell, basics
 
 5-listfilesdigitonly: Display current directory contents in Long format with user and group IDs displayed numerically and hidden files (starting with .)
 
+6-firstdirectory: creates a directory named my_first_directory in the /tmp/ directory.
