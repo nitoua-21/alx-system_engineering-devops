@@ -18,7 +18,7 @@ ALX Software Engineering - Project 0x00. Shell, basics
 
 8-firstdelete: deletes the file betty from /tmp/my_first_directory
 
- 9-firstdirdeletion: deletes the directory my_first_directory that is in the /tmp directory.
+9-firstdirdeletion: deletes the directory my_first_directory that is in the /tmp directory.
 
 10-back: hanges the working directory to the previous one.
 
@@ -31,3 +31,5 @@ ALX Software Engineering - Project 0x00. Shell, basics
 14-copy_html: copies all the HTML files from the current working directory to the parent of the working directory, but only copy files that did not exist in the parent of the working directory or were newer than the versions in the parent of the working directory.
 
 100-lets_move: moves all files beginning with an uppercase letter to the directory /tmp/u
+
+101-clean_emacs: deletes all files in the current working directory that end with the character ~
