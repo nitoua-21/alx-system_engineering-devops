@@ -16,3 +16,4 @@ ALX Software Engineering - Project 0x00. Shell, basics
 
 7-movethatfile: Move the file betty from /tmp/ to /tmp/my_first_directory.
 
+8-firstdelete: Delete the file betty from /tmp/my_first_directory
