@@ -11,3 +11,5 @@ ALX -Software Engineering Project 0x02. Shell, I/O Redirections and filters
 4-lastlines: displays the last 10 lines of /etc/passwd.
 
 5-firstlines: displays the first 10 lines of /etc/passwd.
+
+6-third_line: isplays the third line of the file iacta.
