@@ -45,7 +45,7 @@
 >     0 string SCHOOL School data file
 >     !:mime School
 > 
-> Step 2: Compile the file to generate a magaic file
+> Step 2: Compile the file to generate a magic file
 > 
 >     file -C -m school
 > 
