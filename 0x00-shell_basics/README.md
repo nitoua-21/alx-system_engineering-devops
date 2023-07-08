@@ -38,13 +38,13 @@
 
 `103-commas`: lists all the files and directories of the current directory, separated by commas (,).
 
-`school.mgc`: a magic file school.mgc that can be used with the command file to detect School data files. School data files always contain the string SCHOOL at offset 0.
+> `school.mgc`: a magic file school.mgc that can be used with the command file to detect School data files. School data files always contain the string SCHOOL at offset 0.
 > The `school/mgc` file is generated in 2 steps:
-> Step 1: create a `school` file with the synthax bellow
-> `0 string SCHOOL School data file
-> !:mime School`
-> Step 2: Compile the file to generate a magaic file
-> `file -C -m school`
+> Step 1: create a `school` file with the synthax bellow  
+> `0 string SCHOOL School data file  
+> !:mime School`  
+> Step 2: Compile the file to generate a magaic file  
+> `file -C -m school`  
 > A `school.mgc` file will be generated.
 
 ### Ressources
