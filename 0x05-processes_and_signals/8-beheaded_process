@@ -2,8 +2,6 @@
 # stops  kills the process 7-highlander..
 pid="$(pgrep -f "7-highlander")"
 
-if [[ -z "$pid" ]]; then
-	exit 1
+if [[ -n "$pid" ]]; then
+	kill -SIGTERM "$pid"
 fi
-
-kill -SIGTERM "$pid"
