@@ -5,4 +5,6 @@ pid="$(pgrep -f "7-highlander")"
 if [[ -n "$pid" ]]; then
 	kill -SIGKILL "$pid"
 	echo "Killed"
+else
+	exit 1
 fi
