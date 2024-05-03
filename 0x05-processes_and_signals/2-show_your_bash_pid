@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# displays lines containing the bash word running process
+# shellcheck disable=SC2009
+ps -e -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,comm --forest | grep bash
