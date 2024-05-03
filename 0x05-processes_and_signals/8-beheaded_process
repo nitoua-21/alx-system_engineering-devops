@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# stops  kills the process 7-highlander..
+pid="$(pgrep -f "7-highlander")"
+
+if [[ -z "$pid" ]]; then
+	exit 1
+fi
+
+kill -SIGTERM "$pid"
