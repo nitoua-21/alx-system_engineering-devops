@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This script displays the content of the current directory in a list format,
+# showing only the part of the name after the first dash, and does not display hidden files.
+
+for file in *; do
+  # Check if the item is a file or directory and not hidden
+  if [ -f "$file" ] || [ -d "$file" ]; then
+    # Extract the part of the name after the first dash
+    modified_name="${file#*-}"
+    # Print the modified name if it was changed
+    if [ "$modified_name" != "$file" ]; then
+      echo "$modified_name"
+    else
+      echo "$file"
+    fi
+  fi
+done
