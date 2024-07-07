@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Install nginx on ubuntu server 
+# Nginx should be listening on port 80
+# / return a page that contains the string Hello World!
+
+echo -e "Updading and installing Nginx.\n"
+sudo apt update -y -qq && sudo apt install nginx -y
+
+echo -e "\nSetting Up NginX.\n"
+
+#Start nginx
+sudo service nginx start
+
+#Allow nginx on firewall
+sudo ufw allow 'Mginx HTTP'
+
+# Give the user ownership
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+# Backup
+cp /var/www/html/index.nginx-debian.html var/www/html/index.nginx-debian.bckp
+
+# Creating new index
+echo -e "Hello World!" | dd stattus=none of=/var/www/html/index.nginx-debian.html
+
+# Restarting
+sudo service nginx restart
+
+echo -e "\nDone.\n"
