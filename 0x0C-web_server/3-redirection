@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Configure your Nginx server so that /redirect_me is redirecting to another page.
+# The redirection must be a “301 Moved Permanently”
+
+# Define the string "Hello World!" to write to the default index page.
+STRING="Hello World!"
+
+# Define the redirection configuration for Nginx.
+REDIRECT="\n\tlocation /redirect_me {\n\t\treturn 301 https://github.com/nitoua-21; \n\t}\n"
+
+# Specify the Nginx configuration file path.
+FILE="/etc/nginx/sites-available/default"
+
+# Update the package list.
+sudo apt-get -y update
+
+# Install Nginx.
+sudo apt-get -y install nginx
+
+# Allow HTTP traffic through the firewall.
+ufw allow 'Nginx HTTP'
+
+
+# Write "Hello World!" to the default Nginx index page.
+echo "$STRING" > /var/www/html/index.nginx-debian.html
+
+# Insert the redirection rule into the Nginx configuration file at line 53
+sudo sed -i "53i\ $REDIRECT" "$FILE"
+
+# Restart the Nginx service to apply the changes.
+sudo service nginx restart
