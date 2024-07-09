@@ -3,28 +3,17 @@
 # Configure HAproxy so that it send traffic to web-01 and web-02
 # Distribute requests using a roundrobin algorithm
 
-# install HAproxy
-apt-get -y update
-apt-get -y install haproxy
+CFG="\\\nlisten appname 0.0.0.0:80\n\tmode http\n\tbalance roundrobin\n\toption httpclose\n\toption forwardfor\n\tserver 1733-web-01 3.235.21.36 check\n\tserver 1733-web-02 3.227.3.18 check\n"
 
-# Grant user ownership
-chown -R "$USER":"$USER" /etc/haproxy/haproxy.cfg
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo apt-get install -y haproxy=1.5\*
 
 # Make sure HAproxy can be managed via an init script
 sudo sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy
 
-cat <<EOL >> /etc/haproxy/haproxy.cfg
+# Backup original config file before attempt modifications
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.backup
 
-fontend hbnb
-    bind *:80
-    mode http
-    default_backend app
-
-backend app
-    balance roundrobin
-    server 117202-web-01 52.91.150.244:80 check
-    server 117202-web-02 54.174.121.226:80 check"
-EOL
-
-# Restart to apply changes
-service haproxy start
+# Configure to include roundrobin and two servers
+sudo sed -i "\$a $CFG" /etc/haproxy/haproxy.cfg
