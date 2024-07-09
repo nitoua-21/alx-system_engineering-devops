@@ -10,7 +10,8 @@ apt-get -y install haproxy
 # Grant user ownership
 chown -R "$USER":"$USER" /etc/haproxy/haproxy.cfg
 
-echo "
+cat <<EOL >> /etc/haproxy/haproxy.cfg
+
 fontend hbnb
     bind *:80
     mode http
@@ -19,7 +20,8 @@ fontend hbnb
 backend app
     balance roundrobin
     server 117202-web-01 52.91.150.244:80 check
-    server 117202-web-02 54.174.121.226:80 check" >> /etc/haproxy/haproxy.cfg
+    server 117202-web-02 54.174.121.226:80 check"
+EOL
 
 # Restart to apply changes
 service haproxy start
