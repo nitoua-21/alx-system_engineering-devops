@@ -3,7 +3,7 @@
 # Configure HAproxy so that it send traffic to web-01 and web-02
 # Distribute requests using a roundrobin algorithm
 
-CFG="\\\nlisten appname 0.0.0.0:80\n\tmode http\n\tbalance roundrobin\n\toption httpclose\n\toption forwardfor\n\tserver 1733-web-01 52.91.150.244 check\n\tserver 1733-web-02 54.174.121.226 check\n"
+CFG="\\\nlisten appname 0.0.0.0:80\n\tmode http\n\tbalance roundrobin\n\toption httpclose\n\toption forwardfor\n\tserver 117202-web-01 52.91.150.244 check\n\tserver 117202-web-02 54.174.121.226 check\n"
 
 apt-get update
 apt-get -y install nginx
