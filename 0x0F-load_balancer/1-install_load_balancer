@@ -10,6 +10,9 @@ apt-get -y install haproxy
 # Grant user ownership
 chown -R "$USER":"$USER" /etc/haproxy/haproxy.cfg
 
+# Make sure HAproxy can be managed via an init script
+sudo sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy
+
 cat <<EOL >> /etc/haproxy/haproxy.cfg
 
 fontend hbnb
