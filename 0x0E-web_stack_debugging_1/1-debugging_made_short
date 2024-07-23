@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 # Configures a nginx to run on port 80
 
-apt update
-apt install -y nginx
-sed -i 's/listen 80 default_server;/listen 80 default_server;/' /etc/nginx/sites-available/default
-ufw allow 80/tcp
-service nginx start
+sudo sed -i "s/sites-enabled/sites-available/" /etc/nginx/nginx.conf
+sudo service nginx restart
