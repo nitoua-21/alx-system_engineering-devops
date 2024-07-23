@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 # Configures a nginx to run on port 80
 
-# Remove defaut nginx config file
-sudo rm -rf /etc/nginx/sites-enabled/default
-
-# Configure nginx X to listen on port 80
-ln -S /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-
-# Restart
+sudo sed -i "s/sites-enabled/sites-available/" /etc/nginx/nginx.conf
 sudo service nginx restart
-
