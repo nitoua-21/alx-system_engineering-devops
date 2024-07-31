@@ -40,10 +40,6 @@ frontend http_front
 
 backend http_back
     balance roundrobin
-    server 117202-web-01 52.91.150.244:80 check
-    server 117202-web-02 54.174.121.226:80 check
+    server web01 52.91.150.244:80 check
+    server web02 54.174.121.226:80 check
 EOF'
-
-# Enable and start HAProxy service
-sudo systemctl enable haproxy
-sudo systemctl start haproxy
