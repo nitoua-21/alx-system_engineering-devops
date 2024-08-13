@@ -16,7 +16,7 @@ def number_of_subscribers(subreddit):
     try:
         # Make a GET request to the Reddit API
         response = requests.get(url, headers=headers, allow_redirects=False)
-        
+
         # Check if the request was successful and the subreddit exists
         if response.status_code == 200:
             data = response.json()
@@ -24,6 +24,6 @@ def number_of_subscribers(subreddit):
         else:
             # If the subreddit doesn't exist or there's an error, return 0
             return 0
-    except:
+    except Exception as e:
         # If any exception occurs (e.g., network error), return 0
         return 0
