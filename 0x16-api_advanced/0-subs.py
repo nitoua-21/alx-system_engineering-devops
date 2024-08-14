@@ -10,8 +10,9 @@ def number_of_subscribers(subreddit):
     """Queries the Reddit API and returns the number of subscribers """
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
 
-    headers = requests.utils.default_headers()
-    headers.update({'User-Agent': 'My User Agent 1.0'})
+    headers = {
+        "User-Agent": "linux:alx_app:v1.0.0 (by /u/Icy_Advice_679)"
+    }
 
     try:
         # Make a GET request to the Reddit API
