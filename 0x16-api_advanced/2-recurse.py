@@ -10,9 +10,9 @@ def recurse(subreddit, hot_list=[], after="tmp"):
         return all hot articles for a given subreddit
         return None if invalid subreddit given
     """
-    headers = requests.utils.default_headers()
-    headers.update({'User-Agent': 'My User Agent 1.0'})
-
+    headers = {
+        "User-Agent": "linux:alx_app:v1.0.0 (by /u/Icy_Advice_679)"
+    }
     # update url each recursive call with param "after"
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     if after != "tmp":
