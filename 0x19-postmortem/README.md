@@ -1,70 +1,27 @@
-### Postmortem Report 🛠️💻
+Background Context
+------------------
 
-* * *
+[![](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-sysadmin_devops/294/tWUPWmR.png)](https://youtu.be/rp5cVMNmbro)
 
-#### **Issue Summary:**
+Any software system will eventually fail, and that failure can come stem from a wide range of possible factors: bugs, traffic spikes, security issues, hardware failures, natural disasters, human error… Failing is normal and failing is actually a great opportunity to learn and improve. Any great Software Engineer must learn from his/her mistakes to make sure that they won’t happen again. Failing is fine, but failing twice because of the same issue is not.
 
-*   **Duration of outage:** 🚨 _30 minutes_ — from 10:00 AM to 10:30 AM UTC.
-*   **Impact:** 🚫 _All users_ experienced downtime, unable to access the web service hosted by Nginx. (100% affected! 👎).
-*   **Root cause:** 🤦‍♂️ A classic case of "wrong folder syndrome!" The Nginx configuration file was mistakenly pointing to the `sites-enabled` directory instead of `sites-available`. Oops! 🤷‍♀️
+A postmortem is a tool widely used in the tech industry. After any outage, the team(s) in charge of the system will write a summary that has 2 main goals:
 
-* * *
+*   To provide the rest of the company’s employees easy access to information detailing the cause of the outage. Often outages can have a huge impact on a company, so managers and executives have to understand what happened and how it will impact their work.
+*   And to ensure that the root cause(s) of the outage has been discovered and that measures are taken to make sure it will be fixed.
 
-#### **Timeline:**
+Resources
+---------
 
-*   **10:00 AM UTC:** 🕵️‍♂️ _Detective Engineer_ notices "Connection Refused" while attempting to curl port 80. Immediate suspicion raised.
-*   **10:05 AM UTC:** 🎯 Focus shifts to checking Nginx service and firewall settings (Spoiler alert: nothing wrong there!).
-*   **10:10 AM UTC:** 🚪 Firewall's ruled out. Confusion mounts. An "Aha!" moment was still missing.
-*   **10:15 AM UTC:** 🔍 Engineer discovers Nginx’s "Lost in Configuration" saga—`nginx.conf` was looking at the wrong folder.
-*   **10:20 AM UTC:** 🏃‍♂️ Incident escalated to the _DevOps Avengers_ for further analysis.
-*   **10:25 AM UTC:** 🔧 Problem fixed by modifying `nginx.conf` to point to `sites-available`, followed by restarting Nginx.
-*   **10:30 AM UTC:** 🎉 Website back online! Port 80 is now _alive and kicking_, serving users again.
+**Read or watch**:
 
-* * *
+*   [Incident Report, also referred to as a Postmortem](/rltoken/vkEjk-M6yBWW-wyB-7-I9Q "Incident Report, also referred to as a Postmortem")
+*   [The importance of an incident postmortem process](/rltoken/QwvgCYt2zjKRT7qMRe7I8A "The importance of an incident postmortem process")
+*   [What is an Incident Postmortem?](/rltoken/kBjhT2PIr4X-U8FLI97--Q "What is an Incident Postmortem?")
 
-#### **Root Cause and Resolution:**
+More Info
+---------
 
-##### **What went wrong?** 🧐
+### Manual QA Review
 
-The `nginx.conf` was referencing the `sites-enabled` directory, but the configuration files were sitting comfortably in `sites-available`, sipping coffee and waiting to be used. Since Nginx couldn’t find the correct config, it decided not to serve content at all—typical Nginx tantrum. 🙃
-
-##### **How we fixed it:** 🛠️
-
-*   Step 1: Updated the `nginx.conf` file to reference the right directory (`sites-available`).
-*   Step 2: Gave Nginx a fresh start with a restart. (That’s the IT equivalent of "turn it off and back on again").
-*   Step 3: Verified that Nginx is listening on port 80, and voilà—the site was back up!
-
-* * *
-
-#### **Corrective and Preventative Measures:**
-
-**Lessons learned:** 🎓
-
-*   Don’t trust Nginx’s sense of direction. It sometimes needs a bit of help finding the right folder.
-
-* * *
-
-#### **Improvements moving forward:**
-
-1.  **Pre-Deployment Checklist:** ✅ Ensure `nginx.conf` is pointing in the right direction before it gets deployed.
-    
-2.  **Automated Monitoring:** 🕵️‍♀️ Have bots run around checking that Nginx is serving content and not lazing around with “Connection Refused” messages.
-    
-3.  **Nginx Alerts:** 🚨 Early warning systems to scream at us if Nginx isn't responding on port 80.
-    
-
-* * *
-
-#### **Visual Summary (For the meme lovers)** 🎨
-
-* * *
-
-#### **Task List:**
-
-*    Create a config validation script to avoid future misadventures.
-*    Set up automated tests that ping port 80 and ensure Nginx isn’t on a coffee break.
-*    Implement alerts that notify us before users even notice something’s wrong.
-
-* * *
-
-_And remember folks: in the land of servers, always check your folders—because even Nginx gets lost sometimes!_ 😉
+**It is your responsibility to request a review for your postmortem from a peer before the project’s deadline. If no peers have been reviewed, you should request a review from a TA or staff member.**
